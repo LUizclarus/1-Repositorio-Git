@@ -3,9 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desenvolvimento de Framework I</title>
+    <title>Home - Desenvolvimento de Framework I</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            height: 100vh;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo {
+            position: absolute;
+            left: 0px;
+            height: 110px;
+        }
+        .menu {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: linear-gradient(135deg, #3a8ce4, #615858);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 0px;
+            width: 100%;
+        }
+        .menu a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            background: #4a9fd8;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin: 5px 10px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+        .menu a:hover {
+            background-color: #2c7eb3;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto 0;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 100px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Contrato Pedagógico</h1>
+    <header>
+        <img src="img/logo.png" alt="Logo" class="logo">
+        <h1>Desenvolvimento de Framework I</h1>
+    </header>
+    <div class="content-wrapper">
+        <div class="menu">
+            <a href="#">🏠 Home</a>
+            <a href="#">🌐 About</a>
+            <a href="#">🛒 Product</a>
+            <a href="#">📞 Contact</a>
+        </div>
+        <div class="container">
+            <h2>Contrato Pedagógico</h2>
+            <p>Bem-vindo ao curso de Desenvolvimento de Framework I.</p>
+        </div>
+    </div>
 </body>
 </html>
