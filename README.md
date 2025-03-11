@@ -13,7 +13,6 @@ git add - adiciona os arquivosao stage changes
 <h1>Cabeçalho HTML</h1>
 <h6>Cabeçalho HTML</h6>
 
-
 # Aula-2
 
 <p align="center">
@@ -36,9 +35,7 @@ git add - adiciona os arquivosao stage changes
   <li><a href="#tecnologia_utilizada">Link para Tecnologia Utilizadas.</a></li>
 </ol>
 
-
 # Aula-3
-
 
 <p id="statusprojeto"></p>
 
@@ -102,3 +99,6 @@ As seguintes tecnologias foram utilizadas para desenvolver este README:
 - [MARDOWN](https://www.markdownguide.org/basic-syntax/)
 
 - [HTML](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content)
+
+# Aula-4
+
