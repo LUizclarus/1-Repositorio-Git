@@ -102,3 +102,10 @@ As seguintes tecnologias foram utilizadas para desenvolver este README:
 
 # Aula-4
 
+Mesmos comandos das aulas passadas.
+
+# Aula-5
+
+CLean Code
+
+Começando o HTML
