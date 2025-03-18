@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Desenvolvimento de Framework I</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,7 +44,7 @@
             margin-top: 0px;
             width: 100%;
         }
-        .menu a {
+        .menu a, .menu button {
             display: flex;
             align-items: center;
             color: white;
@@ -54,8 +55,10 @@
             margin: 5px 10px;
             font-size: 1.2rem;
             transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-        .menu a:hover {
+        .menu a:hover, .menu button:hover {
             background-color: #2c7eb3;
         }
         .container {
@@ -74,6 +77,74 @@
             width: 100%;
             margin-top: 100px;
         }
+        /* Modal Calculadora */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .modal-content {
+            background-color: #000;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 250px;
+        }
+        .modal-content h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 15px;
+            text-align: right;
+            font-size: 22px;
+            border: none;
+        }
+        .teclas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 7px;
+        }
+        button.calc-btn {
+            height: 50px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button.calc-btn.zero {
+            grid-column: span 2;
+        }
+        button.calc-btn.igual {
+            grid-row: span 2;
+            height: 108px;
+        }
+        button.calc-btn:hover {
+            background-color: #555;
+        }
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        .material-icons {
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
@@ -86,6 +157,7 @@
             <a href="#">🏠 Home</a>
             <a href="#">ℹ️ About</a>
             <a href="#">📦 Product</a>
+            <button onclick="openCalcModal()">🧮 Calculadora</button>
             <a href="#">📞 Contact</a>
         </div>
         <div class="container">
@@ -93,5 +165,77 @@
             <p>Bem-vindo ao curso de Desenvolvimento de Framework I.</p>
         </div>
     </div>
+
+    <div id="calcModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCalcModal()">&times;</span>
+            <h1>Calculadora</h1>
+            <input type="text" id="display" readonly>
+            <div class="teclas">
+                <button class="calc-btn" onclick="clearDisplay()">C</button>
+                <button class="calc-btn" onclick="backspace()">
+                    <span class="material-icons">backspace</span>
+                </button>
+                <button class="calc-btn" onclick="addChar('/')">/</button>
+                <button class="calc-btn" onclick="addChar('x')">x</button>
+                <button class="calc-btn" onclick="addChar('7')">7</button>
+                <button class="calc-btn" onclick="addChar('8')">8</button>
+                <button class="calc-btn" onclick="addChar('9')">9</button>
+                <button class="calc-btn" onclick="addChar('-')">-</button>
+                <button class="calc-btn" onclick="addChar('4')">4</button>
+                <button class="calc-btn" onclick="addChar('5')">5</button>
+                <button class="calc-btn" onclick="addChar('6')">6</button>
+                <button class="calc-btn" onclick="addChar('+')">+</button>
+                <button class="calc-btn" onclick="addChar('1')">1</button>
+                <button class="calc-btn" onclick="addChar('2')">2</button>
+                <button class="calc-btn" onclick="addChar('3')">3</button>
+                <button class="calc-btn igual" onclick="calculate()">=</button>
+                <button class="calc-btn zero" onclick="addChar('0')">0</button>
+                <button class="calc-btn" onclick="addChar('.')">.</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCalcModal() {
+            document.getElementById('calcModal').style.display = 'block';
+        }
+
+        function closeCalcModal() {
+            document.getElementById('calcModal').style.display = 'none';
+            clearDisplay();
+        }
+
+        function addChar(character) {
+            const display = document.getElementById('display');
+            display.value += character;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function backspace() {
+            const display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            const display = document.getElementById('display');
+            let expression = display.value.replace(/x/g, '*');
+            try {
+                display.value = eval(expression);
+            } catch {
+                display.value = 'Erro';
+            }
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('calcModal');
+            if (event.target == modal) {
+                closeCalcModal();
+            }
+        }
+    </script>
 </body>
 </html>
