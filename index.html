@@ -80,6 +80,38 @@
             margin-top: 100px;
             gap: 20px;
         }
+        .divisoria {
+            width: 100%;
+            height: 2px;
+            background-color: #d3d3d3;
+            margin-top: 20px;
+        }
+        
+        /* Seção Sobre Nós */
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px auto;
+            padding: 20px;
+            border-radius: 0; 
+            box-shadow: none;
+        }
+        .about-section img {
+            max-width: 45%;
+            border-radius: 15px;
+        }
+        .about-section .content {
+            max-width: 50%;
+        }
+        .about-section .content h2 {
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        .about-section .content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
         /* Modal Calculadora */
         .modal {
             display: none;
@@ -148,12 +180,6 @@
         .material-icons {
             font-size: 24px;
         }
-        .divisoria {
-            width: 100%;
-            height: 2px;
-            background-color: #d3d3d3;
-            margin-top: 20px;
-        }
         /* Modal Card de ajuda */
         .contact-card {
             background-color: white;
@@ -162,8 +188,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
-            margin: 20px auto;
-            margin-right: 0;
+            margin: 20px 20px 20px auto;
         }
         .contact-card input, .contact-card textarea {
             width: 100%;
@@ -242,10 +267,10 @@
     <div class="content-wrapper">
         <div class="menu">
             <a href="#">🏠 Home</a>
-            <a href="#">ℹ️ About</a>
-            <a href="#">📦 Product</a>
+            <a href="#about">ℹ️ Sobre</a>
+            <a href="#">📦 Produto</a>
             <button onclick="openCalcModal()">🧮 Calculadora</button>
-            <a href="#">📞 Contact</a>
+            <a href="#contact">📞 Contate-nos</a>
         </div>
         <div class="container">
             <h2>Contrato Pedagógico</h2>
@@ -254,7 +279,19 @@
 
         <div class="divisoria"></div>
 
-        <div class="contact-card">
+        <div id="about" class="about-section">
+            <img src="img/Gato_git.png" alt="Git e GitHub">
+            <div class="content">
+                <h2>Sobre o Git e GitHub</h2>
+                <p>O <strong>Git</strong> é um sistema de controle de versão amplamente utilizado por desenvolvedores para gerenciar e rastrear alterações em seus projetos de código-fonte.</p>
+                <p>O <strong>GitHub</strong> é uma plataforma de hospedagem de código que usa o Git para facilitar a colaboração entre desenvolvedores, tornando o processo de desenvolvimento mais ágil e organizado.</p>
+                <p>Com o GitHub, você pode compartilhar seu código com a comunidade, trabalhar em projetos open-source, e gerenciar versões do seu projeto de forma eficiente.</p>
+            </div>
+        </div>
+
+        <div class="divisoria"></div>
+
+        <div id="contact" class="contact-card">
             <h2>Entre em Contato</h2>
             <form>
                 <div class="input-group">
@@ -271,6 +308,7 @@
         </div>
     </div>
 
+    <!-- Modal Calculadora -->
     <div id="calcModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeCalcModal()">&times;</span>
