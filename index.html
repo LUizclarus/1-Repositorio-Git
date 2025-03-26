@@ -314,6 +314,90 @@
             list-style-type: disc;
             margin-left: 20px;
         }
+
+        /* Config do cod de busca*/
+        .codigo-busca-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
+        }
+        .codigo-busca-section img {
+            max-width: 45%;
+            border-radius: 15px;
+        }
+        .codigo-busca-section .content {
+            max-width: 50%;
+            padding-right: 20px;
+        }
+        .codigo-busca .content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .codigo-busca .content p,
+        .codigo-busca .content ul {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* config remote*/
+        .remote-section {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
+        }
+        .remote-section img {
+            max-width: 45%;
+            border-radius: 15px;
+        }
+        .remote-section .content {
+            max-width: 50%;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .remote-section .content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .remote-section .content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        /* config identação*/
+        .identacao-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
+        }
+        .identacao-section img {
+            max-width: 45%;
+            border-radius: 15px;
+        }
+        .identacao-section .content {
+            max-width: 50%;
+            padding-right: 20px;
+        }
+        .identacao-section .content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .identacao-section .content p,
+        .identacao-section .content ul {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -370,6 +454,55 @@
 
         <div class="divisoria"></div>
 
+        <div class="codigo-busca-section">
+            <div class="content">
+                <h2>Código de Busca</h2>
+                <p>No desenvolvimento de frameworks, <strong>código de busca</strong> geralmente se refere a técnicas e algoritmos usados ​​para encontrar informações de maneira eficiente dentro do código ou de um sistema. Pode envolver desde a busca em estruturas de dados (como árvores ou listas) até a busca em repositórios de código, como em motores de pesquisa para códigos de frameworks ou documentos.</p>
+                <ul>
+                    <li><strong>Algoritmos de busca</strong>: como busca binária, busca em profundidade ou em largura.</li>
+                    <li><strong>Busca em repositórios</strong>: frameworks como o GitHub oferecem sistemas de busca avançados para localizar funções, classes ou pacotes dentro do código.</li>
+                    <li><strong>Otimização de código de busca</strong>: Em frameworks, o código de busca pode ser otimizado para encontrar rapidamente módulos, pacotes ou funcionalidades dentro de um sistema maior, muitas vezes utilizando indexação eficiente e cache.</li>
+                </ul>
+            </div>
+            <img src="img/codigo-de-busca.png" alt="Código de Busca">
+        </div>        
+
+        <div class="divisoria"></div>
+
+        <div class="remote-section">
+            <div class="content">
+                <h2>Remote</h2>
+                <p>Em frameworks, "remote" se refere a operações ou funcionalidades que ocorrem de forma distribuída, muitas vezes em servidores ou máquinas remotas. Isso é comum em sistemas que precisam se comunicar com serviços externos ou realizar operações fora do ambiente local (como APIs externas ou servidores de banco de dados).</p>
+                <p>No contexto de frameworks, a integração com operações remotas é essencial para:</p>
+                <ul>
+                    <li><strong>Autenticação e autorização remota</strong> (ex. OAuth, autenticação via serviços como Google ou Facebook).</li>
+                    <li><strong>Comunicação com APIs RESTful ou GraphQL.</strong></li>
+                    <li><strong>Execução de código remoto</strong>: frameworks que permitem a execução de funções ou tarefas em máquinas diferentes (ex. Kubernetes, servidores em nuvem, etc.).</li>
+                </ul>
+                <p>Para implementar operações remotas em frameworks, protocolos como HTTP/HTTPS, WebSockets ou gRPC são frequentemente utilizados.</p>
+            </div>
+            <img src="img/" alt="Remote">
+        </div>        
+
+        <div class="divisoria"></div>
+
+        <div class="identacao-section">
+            <div class="content">
+                <h2>Indentação</h2>
+                <p>A indentação no contexto de desenvolvimento de frameworks é uma prática crucial para garantir que o código seja legível e compreensível, tanto para quem está desenvolvendo o framework quanto para os desenvolvedores que irão utilizá-lo. A indentação correta ajuda a visualizar a estrutura do código, como blocos de funções, condicionais, laços, entre outros.</p>
+                <p><strong>Importância da indentação:</strong></p>
+                <ul>
+                    <li><strong>Legibilidade</strong>: facilita a compreensão da estrutura do código.</li>
+                    <li><strong>Manutenibilidade</strong>: códigos bem indentados são mais fáceis de atualizar ou corrigir.</li>
+                    <li><strong>Padronização</strong>: frameworks geralmente seguem convenções de indentação para manter o código consistente e fácil de entender para qualquer desenvolvedor.</li>
+                </ul>
+                <p>Em frameworks modernos, a indentação é padronizada (por exemplo, usando 2 ou 4 espaços, ou tabs), e ferramentas de formatação automática (como Prettier ou linters) são comumente utilizadas para garantir que todo o código siga a mesma convenção.</p>
+            </div>
+            <img src="img/" alt="Identação">
+        </div>
+
+        <div class="divisoria"></div>
+        
         <div id="about" class="about-section">
             <img src="img/Gato_git.png" alt="Git e GitHub">
             <div class="content">
