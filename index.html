@@ -166,6 +166,7 @@
         }
         button.calc-btn.igual {
             grid-row: span 2;
+            background-color: #ff8400ea;
             height: 108px;
         }
         button.calc-btn:hover {
@@ -257,6 +258,62 @@
         .footer p {
             margin: 0;
         }
+        /* Config do clean code*/
+        .clean-code-section {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
+        }
+        .clean-code-section img {
+            max-width: 45%;
+            border-radius: 15px;
+        }
+        .clean-code-section .content {
+            max-width: 50%;
+            padding-right: 20px;
+        }
+        .clean-code-section .content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .clean-code-section .content p,
+        .clean-code-section .content ul {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Config do clean code(2)*/
+        .clean-code-section.book {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
+        }
+        .clean-code-section.book img {
+            max-width: 45%; 
+            border-radius: 15px;
+            margin-right: 20px;
+        }
+        .clean-code-section.book .content {
+            max-width: 50%;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .clean-code-section.book .content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .clean-code-section.book .content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body>
@@ -276,6 +333,40 @@
             <h2>Contrato Pedagógico</h2>
             <p>Bem-vindo ao curso de Desenvolvimento de Framework I.</p>
         </div>
+
+        <div class="divisoria"></div>
+
+        <div class="clean-code-section">
+            <img src="img/clean_code.webp" alt="Clean Code">
+            <div class="content">
+                <h2>Clean Code</h2>
+                <p><strong>Clean Code</strong> é uma abordagem que enfatiza a escrita de código claro, legível e fácil de entender. Seus principais princípios são:</p>
+                <ul>
+                    <li><strong>Legibilidade é Prioridade</strong> – Use nomes claros e descritivos para variáveis, funções e classes. O código deve ser compreensível para qualquer desenvolvedor.</li>
+                    <li><strong>Mantenha a Simplicidade</strong> – Evite complexidade desnecessária. Prefira soluções diretas e eficientes.</li>
+                    <li><strong>Siga Convenções de Estilo</strong> – Utilize padrões de formatação e nomenclatura consistentes para melhorar a leitura e manutenção do código.</li>
+                    <li><strong>Refatore Regularmente</strong> – Revise e melhore o código continuamente para eliminar duplicações e simplificar estruturas.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="divisoria"></div>
+
+        <div class="clean-code-section book">
+            <img src="img/clean_code.webp" alt="Clean Code">
+            <div class="content">
+                <h2>Clean Code</h2>
+                <p><strong>Clean Code</strong></p>
+                <p>O livro <strong>Clean Code</strong>, de Robert C. Martin (Uncle Bob), publicado em 2008, explora esses conceitos e oferece diretrizes práticas para escrever código de qualidade. Entre os principais temas abordados estão:</p>
+                <ul>
+                    <li><strong>Nomenclatura Significativa</strong> – Escolha nomes descritivos para os elementos do código.</li>
+                    <li><strong>Funções e Métodos</strong> – Devem ser curtos, coesos e realizar apenas uma tarefa.</li>
+                    <li><strong>Comentários e Documentação</strong> – Devem ser usados com moderação; o código deve ser autoexplicativo.</li>
+                    <li><strong>Formatação e Estilo</strong> – Adotar convenções consistentes melhora a legibilidade.</li>
+                </ul>
+                <p>Ao aplicar esses princípios, os desenvolvedores tornam o código mais fácil de manter e evoluir.</p>
+            </div>
+        </div>   
 
         <div class="divisoria"></div>
 
