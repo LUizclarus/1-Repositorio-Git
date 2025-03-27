@@ -1,12 +1,29 @@
 # 1-Repositorio-Git
 Primeira aula de Git
 
-
 ## Comandos Git
+
+```Bash
+# Começar uma tarefa nova no Projeto:
+
+git checkout main - muda para branch main
+
+git pull - puxa todos os arquivos da main
+
+git branch - lista as branches disponíveis
+
+git checkout -b nome-da-branch - cria e muda para uma nova branch
+
+# Finalizar a tarefa:
+
 git status - mostra o status do arquivo
 
-git add - adiciona os arquivosao stage changes
+git add . - adiciona os arquivosao stage changes
 
+git commit -m "mensagem" - salva as alterações no repositório
+
+git push - manda pro repositório
+```
 
 # Cabeçalho Markdown
 ###### Cabeçalho Markdown
