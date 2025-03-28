@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pesquisa de Produto</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			margin: 20px;
+		}
+		h1 {
+			color: #000000;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		label {
+			display: block;
+			margin-top: 15px;
+			margin-bottom: 5px;
+		}
+		select, input {
+			padding: 10px;
+			margin: 5px 0;
+			width: calc(100% - 22px);
+			max-width: 400px;
+			box-sizing: border-box;
+		}
+		button {
+			padding: 10px;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+		#pesquisar, #clearButton {
+			background-color: #007BFF;
+		}
+		.result {
+			width: 50%;
+		}
+		.button-container {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 10px;
+			margin-top: 10px;
+			max-width: 400px;
+		}
+		#exportCSV {
+			background-color: #28a745;
+			margin-left: auto; 
+		}
+		.price-container {
+			display: flex;
+			flex-direction: column;
+		}
+		.product-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 5px;
+			background-color: #ffffff;
+			margin-bottom: 8px;
+			border: 2px solid #000;
+			min-height: 120px;
+		}
+		.product-info {
+			flex: 1;
+			margin-left: 15px;
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+		}
+		.product-info h3 {
+			font-size: 20px;
+			margin: 0;
+		}
+		.product-info p {
+			margin: 0;
+			font-size: 16px;
+		}
+		.product-info a {
+			margin: 0;
+			font-size: 15px;
+		}
+		.product-thumbnail-container {
+			width: 65px;  
+			height: 65px;
+			overflow: hidden;
+			position: relative;
+			margin-left: 15px; 
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+		.product-thumbnail {
+			position: absolute;
+			top: 50%;
+			left: 50%; 
+			width: auto;
+			height: 100%;
+			transform: translate(-50%, -50%);
+		}
+		.action-buttons {
+		    align-items: center;
+			position: absolute;
+			right: 10px;
+			display: flex;
+			gap: 10px;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		.evaluation-button {
+			cursor: pointer;
+			font-size: 20px;
+			line-height: 1;
+			border: none;
+			background: none;
+			color: #666;
+		}
+		.action-button.red {
+			color: red;
+		}
+		.action-button.green {
+			color: green;
+		}
+		.product-item.red {
+			background-color: #ffcccc;
+		}
+		.product-item.green {
+			background-color: #99ff99; 
+		}		
+		.product-item.yellow {
+			background-color: #fff3b3;
+		}
+		.form-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			max-width: 900px;
+		}
+		.form-container > div {
+			flex: 1 1 48%;
+			box-sizing: border-box;
+		}
+		.form-container > div.full-width {
+			flex: 1 1 100%;
+		}
+		.table-result {
+			display: flex;
+			flex-direction: row;
+			gap: 2rem;
+		}
+		
+		.table-result h1 {
+			text-align: center;
+			border-bottom: 1px solid gray;
+		}
+		
+		.export-button-bar {
+			width: 100%;
+			text-align: right;
+			padding-bottom: 5px;
+		}
+        .button_voltar img {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 45px;
+            height: 45px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; align-items: center; gap: 225px;">
+        <a href="index.html" class="button_voltar"><img src="img/voltar.png" alt="Voltar"></a>
+        <h1>Pesquisa de Produto</h1>
+    </div>
+	
+	<div class="form-container">
+		<div>
+			<label for="client">Cliente:</label>
+			<select id="client">
+				<option value="" disabled selected>Selecione seu cliente</option>
+				<option value="Paris Elysees">Paris Elysees</option>
+			</select>
+		</div>
+		
+		<div>
+			<label for="inserirProduto">Digite o nome do produto:</label>
+			<input type="text" id="inserirProduto" placeholder="Digite o nome do produto: ">
+		</div>
+		
+		<div>
+			<label for="plataforma">Escolha sua plataforma:</label>
+			<select id="plataforma">
+				<option value="" disabled selected>Selecione sua plataforma</option>
+				<option value="mercadolivre">Mercado Livre</option>
+				<option value="lojasamericanas">Lojas Americanas</option>
+				<option value="Shopee">Shopee</option>
+			</select>
+		</div>
+
+		<div>
+			<div class="price-container">
+				<label for="preco">Preço:</label>
+				<input type="number" id="preco" placeholder="Preço: " step="0.01">
+			</div>
+		</div>
+	</div>
+
+	<div class="button-container">
+		<button id="pesquisar">Pesquisar</button>
+		<button id="clearButton">Limpar</button>
+	</div>
+	
+	<p id="menssages"></p>
+	<div class="export-button-bar">
+		<button id="exportCSV">Exportar para Excel</button>
+	</div>
+	<div class="table-result">
+		<div class="result" id="resultMessages">
+			<h1>Resultados de busca</h1>
+		</div>
+		<div class="result" id="resultComplaints">
+			<h1>Denúncias</h1>
+		</div>
+	</div>
+
+	<script>
+		const pesquisar = document.getElementById('pesquisar');
+		const clearButton = document.getElementById('clearButton');
+		const inserirProduto = document.getElementById('inserirProduto');
+		const menssages = document.getElementById('menssages');
+		const resultMessages = document.getElementById('resultMessages');
+		const resultComplaints = document.getElementById('resultComplaints');
+		const precoInput = document.getElementById('preco');
+		const exportCSV = document.getElementById('exportCSV');
+
+		let allProducts = [];
+		let totalResults = 0;
+		
+		pesquisar.addEventListener('click', function() {
+
+			const searchedProduct = inserirProduto.value.trim();
+			const preco = parseFloat(precoInput.value) || 0;
+
+			if (searchedProduct === '') {
+				menssages.textContent = 'Por favor, digite um produto.';
+				return;
+			}
+
+			searchProduct(searchedProduct, preco);
+		});
+
+		clearButton.addEventListener('click', function() {
+			inserirProduto.value = '';
+			precoInput.value = '';
+			menssages.textContent = '';
+			resultMessages.innerHTML = '<h1>Resultados de busca</h1>';
+			resultComplaints.innerHTML = '<h1>Denúncias</h1>';
+			allProducts = [];
+			totalResults = 0;
+		});
+
+		function searchProduct(Product, preco) {
+		    const updatePrice = preco > 0 ? preco - 0.01 : 0;
+			
+			const apiUrl = `https://api.mercadolibre.com/sites/MLB/search?q=${Product}`;
+			
+			allProducts = [];
+			totalResults = 0;
+
+			fetch(apiUrl)
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Erro ao buscar produtos.');
+					}
+					return response.json();
+				})
+				.then(data => {
+					totalResults = data.paging.total;
+
+					const filteredProducts = data.results.filter(item => Product.split(" ").every(p => item.title.toLowerCase().includes(p.toLowerCase())));
+					allProducts = filteredProducts;
+
+					displayResults();
+				})
+				.catch(error => {
+					menssages.textContent = error.message;
+				});
+		}
+		
+		function reportProduct(button) {
+			const productItem = button.closest('.product-item');
+			const productId = productItem ? productItem.getAttribute('data-id') : null;
+
+			if (productId) {
+				if (productItem.classList.contains('red')) {
+					const confirmReport = confirm("Você tem certeza que deseja denunciar este produto?");
+					if (confirmReport) {
+						const reportUrl = `https://www.mercadolivre.com.br/noindex/denounce?item_id=${productId}&element_type=ITM`;
+						window.open(reportUrl, '_blank');
+					}
+				} else {
+					productItem.classList.add('red');
+					productItem.classList.remove('green', 'yellow')
+					resultComplaints.appendChild(productItem);
+				}
+			}
+		}
+		
+		function displayResults() {
+			if (totalResults === 0) {
+				menssages.textContent = 'Nenhum produto encontrado fora do intervalo de preço especificado.';
+				return;
+			}
+
+			resultMessages.innerHTML = '<h1>Resultados de busca</h1>';
+			resultComplaints.innerHTML = '<h1>Denúncias</h1>';
+			
+			var preco = parseFloat(precoInput.value) || 0;
+
+			allProducts.forEach(product => {
+				const productElement = document.createElement('div');
+				productElement.className = 'product-item';
+				productElement.setAttribute('data-id', product.id);
+					if (product.title.toLowerCase().includes('kit')) {
+						productElement.classList.add('yellow');
+					}
+				productElement.innerHTML = `
+					<div class="product-thumbnail-container">
+						<img src="${product.thumbnail}" alt="${product.title}" class="product-thumbnail">
+					</div>
+					<div class="product-info">
+						<h3>${product.title}</h3>
+						<p>Vendedor: ${product.seller ? product.seller.nickname : 'Desconhecido'}</p>
+						<p>Preço: R$ ${product.price}</p>
+						<a href="${product.permalink}" target="_blank">Ver mais</a>
+					</div>
+					<div class="action-buttons">
+						<button class="evaluation-button" onclick="markGreen(this)">✔️</button>
+						<button class="evaluation-button" onclick="markRed(this)">📢</button>
+					</div>
+				`;
+				
+				if (product.price < preco) {
+					productElement.classList.add('red');
+					productElement.classList.remove('green', 'yellow')
+					resultComplaints.appendChild(productElement);
+				} else {
+					resultMessages.appendChild(productElement);
+				}
+			
+			});
+
+			menssages.textContent = `Total de produtos encontrados: ${totalResults}.`;
+		}
+		
+		function markRed(button) {
+			reportProduct(button);
+		}
+
+		function markGreen(button) {
+			const productItem = button.closest('.product-item');
+			const warningButton = productItem.querySelector('.evaluation-button[onclick="markYellow(this)"]');
+			productItem.classList.add('green');
+			productItem.classList.remove('red', 'yellow');
+			resultMessages.appendChild(productItem);
+		}
+
+		function markYellow(button) {
+			const productItem = button.closest('.product-item');
+			productItem.classList.add('yellow');
+			productItem.classList.remove('red', 'green');
+			button.style.display = 'inline';
+		}
+
+		exportCSV.addEventListener('click', function() {
+			const Products = Array.from(resultComplaints.children).filter(item => item.classList.contains('red'));
+
+			if (Products.length === 0) {
+				alert('Nenhum produto selecionado para exportar.');
+				return;
+			}
+
+			if (confirm('Estão sendo exportados os produtos! Deseja continuar?')) {
+				const productsData = Products.map(item => {
+					const productInfo = item.querySelector('.product-info');
+					const productTitle = productInfo.querySelector('h3').textContent;
+					const priceElement = Array.from(productInfo.querySelectorAll('p')).find(p => p.textContent.includes('Preço: R$'));
+
+					return {
+						title: productTitle,
+						price: priceElement ? priceElement.textContent.replace('Preço: R$ ', '') : 'N/A', 
+						seller: productInfo.querySelector('p').textContent.replace('Vendedor: ', ''), 
+						permalink: productInfo.querySelector('a').href
+					};
+				});
+
+				const csvHeader = ['Nome do Vendedor', 'Nome do Produto', 'Link', 'Valor'];
+
+				const csvRows = productsData.map(product => [
+					product.seller,
+					product.title,  
+					product.permalink, 
+					product.price
+				]);
+
+				const csvContent = [csvHeader.join(','), ...csvRows.map(row => row.join(','))].join('\n');
+
+				const produto = inserirProduto.value.trim();
+				const blob = new Blob([csvContent], { type: 'text/csv' });
+				const link = document.createElement('a');
+				link.href = URL.createObjectURL(blob);
+				link.download = `${produto}.csv`;
+				link.click(); 
+			}
+		});
+	</script>
+</body>
+</html>
